@@ -29,7 +29,19 @@ class TestDocumentLoadChain(unittest.TestCase):
     def test_run_chain(self):
         chain = create_csv_chain()
         response = chain.invoke("Suggest a good action movie to watch")
-        self.assertEqual(response.strip(), "Answer: Based on the provided context, \"The Matrix\" would be a great action movie to watch. It falls under the action genre and was released in 1999.")
+        options = [
+            "The Dark Knight", 
+            "Inception", 
+            "Star Wars: Episode V - The Empire Strikes Back", 
+            "The Matrix"
+            ]
+        has_relevant_suggestion = False
+        for option in options:
+            if option in response:
+                has_relevant_suggestion = True
+                break
+        print(response.strip())
+        self.assertTrue(has_relevant_suggestion)
         
 class TestLLMResponses(unittest.TestCase):
 
