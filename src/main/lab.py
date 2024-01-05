@@ -18,7 +18,7 @@ import os
 
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 EMBED_ENDPOINT = os.getenv("EMBED_ENDPOINT")
-LLM_ENDPOINT = os.getenv("CHAT_URL")
+LLM_ENDPOINT = os.getenv("LLM_ENDPOINT")
 
 def setup_csv_retriever():
     """

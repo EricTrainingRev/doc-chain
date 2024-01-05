@@ -29,7 +29,7 @@ from langchain_core.output_parsers import StrOutputParser
 
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
 EMBED_ENDPOINT = os.getenv("EMBED_ENDPOINT")
-LLM_ENDPOINT = os.getenv("CHAT_URL")
+LLM_ENDPOINT = os.getenv("LLM_ENDPOINT")
 
 #  create embedding function for our Chroma client
 huggingface_embedding_function = HuggingFaceInferenceAPIEmbeddings(api_key=HUGGINGFACEHUB_API_TOKEN, api_url=EMBED_ENDPOINT)
