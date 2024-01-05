@@ -11,12 +11,12 @@ from langchain_core.output_parsers import StrOutputParser
 
 """
     This module has an example chain that loads relevant information from a document and uses the
-    content of the document to augument the query made to the llm in the chain. Each step in producing
+    content of the document to augment the query made to the llm in the chain. Each step in producing
     the chain is explained below.
     
     The chain is going to need four fundamental pieces:
         - search and retrieval
-        - formated prompt
+        - formatted prompt
         - llm functionality
         - response output
 """
@@ -24,7 +24,7 @@ from langchain_core.output_parsers import StrOutputParser
 """
     Search and Retrieval:
         here is where the chain will load relevant information from a document. Since this this example
-        uses an ephemeral vectorstore the document will need to be loaded first. 
+        uses an ephemeral vector store the document will need to be loaded first. 
 """
 
 HUGGINGFACEHUB_API_TOKEN = os.getenv("HUGGINGFACEHUB_API_TOKEN")
@@ -40,7 +40,7 @@ chroma_client = Chroma(embedding_function=huggingface_embedding_function, collec
 # load a text file
 lab_text = TextLoader("src/resources/lab_txt.txt").load()
 
-# load lab_text into vectorstore
+# load lab_text into vector store
 chroma_client.add_documents(lab_text)
 
 # create a VectorStoreRetriever object for search and retrieval in the chain
@@ -69,7 +69,7 @@ prompt = ChatPromptTemplate.from_template(template)
 
 """
     Now we will setup the llm configuration: since we are using a HuggingFace endpoint we need to make
-    a HuggingFaceEnpoint object
+    a HuggingFaceEndpoint object
 """
 # here we configure the llm we are using via HuggingFace
 llm = HuggingFaceEndpoint(
@@ -89,7 +89,7 @@ llm = HuggingFaceEndpoint(
         4. observe the response from the LLM
 """
 
-# the parenthes are just for implicit line continuation
+# the parenthesis are just for implicit line continuation
 text_chain = (
     {"context": text_retriever, "question": RunnablePassthrough()}
     | prompt
